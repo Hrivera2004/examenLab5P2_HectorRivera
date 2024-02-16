@@ -269,7 +269,6 @@ public class Examen5P2_HectorRivera extends javax.swing.JFrame {
         jFrame_Civiles.getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jFrame_Empleados.setFocusable(false);
-        jFrame_Empleados.setPreferredSize(new java.awt.Dimension(506, 614));
         jFrame_Empleados.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
@@ -678,7 +677,7 @@ public class Examen5P2_HectorRivera extends javax.swing.JFrame {
         model1_civ.addRow(arg1);
         for (tramite t : u.getTramites()) {
             Object arg2[] = {t.getNombre(),t.getID_usada(),t.getFechaEnviada(),u.getNumID()};
-            model1_civ.addRow(arg2);
+            model2_civ.addRow(arg2);
         }   
                       
         
@@ -711,7 +710,7 @@ public class Examen5P2_HectorRivera extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         ((Civilies)usuarios.get(usuario)).getTramites().add(
-        new tramite(jTextField_nombre.getText(), usuarios.get(usuario).getNumID(), new Date())
+        new tramite(jTextField_tramiteNombre.getText(), usuarios.get(usuario).getNumID(), new Date())
         );
         
     }//GEN-LAST:event_jButton_saveTramiteMouseClicked
