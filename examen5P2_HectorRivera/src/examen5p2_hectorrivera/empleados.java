@@ -24,6 +24,8 @@ public class empleados extends Usuario{
         this.añosT = añosT;
     }
 
+    
+
     public String getCarrera() {
         return carrera;
     }

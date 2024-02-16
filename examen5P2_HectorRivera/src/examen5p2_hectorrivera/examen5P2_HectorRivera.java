@@ -4,6 +4,7 @@ package examen5p2_hectorrivera;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
 
 /**
  *
@@ -16,9 +17,12 @@ public class Examen5P2_HectorRivera extends javax.swing.JFrame {
      */
     public Examen5P2_HectorRivera() {
         initComponents();
-        usuarios.add(new empleados());
-        
+        usuarios.add(new empleados("ing.sistemas","IT",8,"jenn","simon","2202_1pq","female","Comayagua","",new Date(1980, 12, 1)));
+        usuarios.get(0).setNumID(ID(usuarios.getLast()));
         usuarios.add(new Civilies("jaf","algo","121xc","male","Francisco Morazan","",new Date(2004, 3, 12)));
+        usuarios.get(1).setNumID(ID(usuarios.getLast()));
+        usuarios.add(new Civilies("q","talvez","8321j","male","Cortés","",new Date(2004, 4, 12)));
+        usuarios.get(2).setNumID(ID(usuarios.getLast()));
     }
 
     /**
@@ -30,34 +34,275 @@ public class Examen5P2_HectorRivera extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFrame_Civiles = new javax.swing.JFrame();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel_GreetingCivil = new javax.swing.JLabel();
+        jButton_CerrarSesionCivil = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel4 = new javax.swing.JPanel();
+        jFrame_Empleados = new javax.swing.JFrame();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel_GreetingEMP = new javax.swing.JLabel();
+        jButton_CerrarSesionEMP = new javax.swing.JButton();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jComboBox_Choose = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField_nombre = new javax.swing.JTextField();
+        jPasswordField_contraseña = new javax.swing.JPasswordField();
+        jButton_IgresarLogin = new javax.swing.JButton();
+
+        jFrame_Civiles.setResizable(false);
+        jFrame_Civiles.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
+
+        jLabel_GreetingCivil.setForeground(new java.awt.Color(0, 0, 0));
+
+        jButton_CerrarSesionCivil.setText("Cerrar Sesion");
+        jButton_CerrarSesionCivil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_CerrarSesionCivilMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 325, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 287, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("tab1", jPanel4);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTabbedPane1)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel_GreetingCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton_CerrarSesionCivil)))
+                .addGap(39, 39, 39))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel_GreetingCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_CerrarSesionCivil))
+                .addGap(74, 74, 74)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+
+        jFrame_Civiles.getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 490));
+
+        jFrame_Empleados.setPreferredSize(new java.awt.Dimension(400, 491));
+        jFrame_Empleados.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+
+        jLabel_GreetingEMP.setForeground(new java.awt.Color(0, 0, 0));
+
+        jButton_CerrarSesionEMP.setText("Cerrar Sesion");
+        jButton_CerrarSesionEMP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_CerrarSesionEMPMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 388, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 315, Short.MAX_VALUE)
+        );
+
+        jTabbedPane2.addTab("Infroamcion Civiles", jPanel5);
+
+        jComboBox_Choose.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox_Choose.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox_ChooseItemStateChanged(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jComboBox_Choose, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(240, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jComboBox_Choose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(287, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("Modificar Civilies", jPanel6);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jLabel_GreetingEMP, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton_CerrarSesionEMP)
+                .addGap(40, 40, 40))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane2)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel_GreetingEMP, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_CerrarSesionEMP))
+                .addGap(69, 69, 69)
+                .addComponent(jTabbedPane2)
+                .addContainerGap())
+        );
+
+        jFrame_Empleados.getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 490));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Nombre completo:");
+
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Contraseña:");
+
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Password");
+
+        jButton_IgresarLogin.setText("Ingresar");
+        jButton_IgresarLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_IgresarLoginMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(169, 169, 169)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)
+                            .addComponent(jTextField_nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+                            .addComponent(jPasswordField_contraseña)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(154, 154, 154)
+                        .addComponent(jButton_IgresarLogin)))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel3)
+                .addGap(34, 34, 34)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPasswordField_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton_IgresarLogin)
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton_IgresarLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_IgresarLoginMouseClicked
+        // TODO add your handling code here:
+        for (int i = 0; i < usuarios.size(); i++) {
+            if (jTextField_nombre.getText().equals(usuarios.get(i).getNombre()+" "+usuarios.get(i).getApellido())) {
+                if (jPasswordField_contraseña.getText().equals(usuarios.get(i).getContraseña())) {
+                    this.setVisible(false);
+                    
+                    if (usuarios.get(i) instanceof Civilies) {
+                        jLabel_GreetingCivil.setText("Bienvenido: "+ usuarios.get(i).getNombre());
+                        jFrame_Civiles.setVisible(true);
+                        jFrame_Empleados.pack();
+                        
+                    }else if(usuarios.get(i) instanceof empleados){
+                        jLabel_GreetingEMP.setText("Bienvenido: "+ usuarios.get(i).getNombre());
+                        jFrame_Empleados.setVisible(true);
+                        jFrame_Empleados.pack();
+                    }
+                    
+                }
+            }
+        }
+    }//GEN-LAST:event_jButton_IgresarLoginMouseClicked
+
+    private void jButton_CerrarSesionEMPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_CerrarSesionEMPMouseClicked
+        // TODO add your handling code here:
+        jTextField_nombre.setText("");
+        jPasswordField_contraseña.setText("");
+        jFrame_Empleados.dispose();
+        this.setVisible(true);
+    }//GEN-LAST:event_jButton_CerrarSesionEMPMouseClicked
+
+    private void jButton_CerrarSesionCivilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_CerrarSesionCivilMouseClicked
+        // TODO add your handling code here:
+        jTextField_nombre.setText("");
+        jPasswordField_contraseña.setText("");
+        jFrame_Civiles.dispose();
+        this.setVisible(true);
+    }//GEN-LAST:event_jButton_CerrarSesionCivilMouseClicked
+
+    private void jComboBox_ChooseItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox_ChooseItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox_ChooseItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -96,8 +341,67 @@ public class Examen5P2_HectorRivera extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton_CerrarSesionCivil;
+    private javax.swing.JButton jButton_CerrarSesionEMP;
+    private javax.swing.JButton jButton_IgresarLogin;
+    private javax.swing.JComboBox<String> jComboBox_Choose;
+    private javax.swing.JFrame jFrame_Civiles;
+    private javax.swing.JFrame jFrame_Empleados;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel_GreetingCivil;
+    private javax.swing.JLabel jLabel_GreetingEMP;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPasswordField jPasswordField_contraseña;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTextField jTextField_nombre;
     // End of variables declaration//GEN-END:variables
-    ArrayList<Usuario> usuarios = new ArrayList<>();
+    private ArrayList<Usuario> usuarios = new ArrayList<>();
+    private int usuario=0;
     
+    public String ID(Usuario usuario){
+        String ID ="";
+        Random rd = new Random();
+        int aux = 0;
+        
+        if (usuario.getDepartamento().equals("Francisco Morazan")) {
+            ID= ID+"01";
+            aux = rd.nextInt(28)+1;
+            if (aux<10) {
+                ID= ID+0+""+aux;
+            }else{
+                ID= ID+""+aux;
+            }
+        }else if(usuario.getDepartamento().equals("Cortés")){
+            ID= ID+"02";
+            aux = rd.nextInt(12)+1;
+            if (aux<10) {
+                ID= ID+0+""+aux;
+            }else{
+                ID= ID+""+aux;
+            }
+        }else if(usuario.getDepartamento().equals("Comayagua")){
+            ID= ID+"03";
+            aux = rd.nextInt(21)+1;
+            if (aux<10) {
+                ID= ID+0+""+aux;
+            }else{
+                ID= ID+""+aux;
+            }
+        }
+        
+        ID= ID + "-"+usuario.getFN().getYear();
+        
+        for (int i = 0; i < 5; i++) {
+            ID = ID + rd.nextInt(10);
+        }
+        return ID;
+    }
 }
