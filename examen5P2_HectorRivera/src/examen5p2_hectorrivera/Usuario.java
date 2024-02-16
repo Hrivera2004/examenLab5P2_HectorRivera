@@ -84,7 +84,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" + "nombre=" + nombre + ", apellido=" + apellido + ", contrase\u00f1a=" + contraseña + ", sexo=" + sexo + ", departamento=" + departamento + ", numID=" + numID + ", FN=" + FN + '}';
+        return numID;
     }
     
     
