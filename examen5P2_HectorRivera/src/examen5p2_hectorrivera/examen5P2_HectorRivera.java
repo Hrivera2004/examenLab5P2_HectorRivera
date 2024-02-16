@@ -49,7 +49,7 @@ public class Examen5P2_HectorRivera extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel_GreetingCivil = new javax.swing.JLabel();
         jButton_CerrarSesionCivil = new javax.swing.JButton();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jTabbedPane_civil = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable_Civil_Info = new javax.swing.JTable();
@@ -116,9 +116,9 @@ public class Examen5P2_HectorRivera extends javax.swing.JFrame {
             }
         });
 
-        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTabbedPane_civil.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTabbedPane1MouseClicked(evt);
+                jTabbedPane_civilMouseClicked(evt);
             }
         });
 
@@ -179,7 +179,7 @@ public class Examen5P2_HectorRivera extends javax.swing.JFrame {
                 .addContainerGap(77, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Infromacion personal", jPanel4);
+        jTabbedPane_civil.addTab("Infromacion personal", jPanel4);
 
         jTextArea_descripcion.setColumns(20);
         jTextArea_descripcion.setRows(5);
@@ -237,7 +237,7 @@ public class Examen5P2_HectorRivera extends javax.swing.JFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Gestion de tramites", jPanel7);
+        jTabbedPane_civil.addTab("Gestion de tramites", jPanel7);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -251,7 +251,7 @@ public class Examen5P2_HectorRivera extends javax.swing.JFrame {
                 .addGap(39, 39, 39))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addComponent(jTabbedPane_civil)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -262,7 +262,7 @@ public class Examen5P2_HectorRivera extends javax.swing.JFrame {
                     .addComponent(jLabel_GreetingCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_CerrarSesionCivil))
                 .addGap(74, 74, 74)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabbedPane_civil, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(63, Short.MAX_VALUE))
         );
 
@@ -578,16 +578,18 @@ public class Examen5P2_HectorRivera extends javax.swing.JFrame {
             if (jTextField_nombre.getText().equals(usuarios.get(i).getNombre()+" "+usuarios.get(i).getApellido())) {
                 if (jPasswordField_contraseña.getText().equals(usuarios.get(i).getContraseña())) {
                     this.setVisible(false);
-                    
+                    usuario = i;
                     if (usuarios.get(i) instanceof Civilies) {
                         jLabel_GreetingCivil.setText("Bienvenido: "+ usuarios.get(i).getNombre()+" "+usuarios.get(i).getApellido());
                         jFrame_Civiles.setVisible(true);
                         jFrame_Empleados.pack();
+                        break;
                         
                     }else if(usuarios.get(i) instanceof empleados){
                         jLabel_GreetingEMP.setText("Bienvenido: "+ usuarios.get(i).getNombre()+" "+usuarios.get(i).getApellido());
                         jFrame_Empleados.setVisible(true);
                         jFrame_Empleados.pack();
+                        break;
                     }
                     
                 }
@@ -659,25 +661,32 @@ public class Examen5P2_HectorRivera extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jPanel4MouseClicked
 
-    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
-        // TODO add your handling code here:
-        DefaultTableModel model1 = (DefaultTableModel) jTable_Civil_Info.getModel();
-        DefaultTableModel model2 = (DefaultTableModel) jTable_Civil_tramites.getModel();
+    private void jTabbedPane_civilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane_civilMouseClicked
+//         TODO add your handling code here:
+        DefaultTableModel model1_civ = (DefaultTableModel) jTable_Civil_Info.getModel();
+        DefaultTableModel model2_civ = (DefaultTableModel) jTable_Civil_tramites.getModel();
+        for (int i = 0; i < model1_civ.getRowCount(); i++) {
+            model1_civ.removeRow(i);
+        }
+        for (int i = 0; i < model2_civ.getRowCount(); i++) {
+            model2_civ.removeRow(i);
+        }
+        
         Civilies u = (Civilies)usuarios.get(usuario);
             
         Object arg1[] = {u.getNombre()+" "+u.getApellido(),u.getNumID(),u.getFN()};
-        model1.addRow(arg1);
+        model1_civ.addRow(arg1);
         for (tramite t : u.getTramites()) {
             Object arg2[] = {t.getNombre(),t.getID_usada(),t.getFechaEnviada(),u.getNumID()};
-            model2.addRow(arg2);
+            model1_civ.addRow(arg2);
         }   
                       
         
 
-        jTable_Civiles.setModel(model1);
-        jTable_Tramites.setModel(model2);
+        jTable_Civil_Info.setModel(model1_civ);
+        jTable_Civil_tramites.setModel(model2_civ);
         
-    }//GEN-LAST:event_jTabbedPane1MouseClicked
+    }//GEN-LAST:event_jTabbedPane_civilMouseClicked
 
     private void jTabbedPane2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane2MouseClicked
         // TODO add your handling code here:
@@ -695,13 +704,16 @@ public class Examen5P2_HectorRivera extends javax.swing.JFrame {
                     }
         
                     jTable_Civiles.setModel(model1);
-                    jTable_Tramites.setModel(model2);
+
     }//GEN-LAST:event_jTabbedPane2MouseClicked
 
     private void jButton_saveTramiteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_saveTramiteMouseClicked
         // TODO add your handling code here:
+
         ((Civilies)usuarios.get(usuario)).getTramites().add(
-                new tramite(jTextField_nombre.getText(), usuarios.get(usuario).getNumID(), new Date()));
+        new tramite(jTextField_nombre.getText(), usuarios.get(usuario).getNumID(), new Date())
+        );
+        
     }//GEN-LAST:event_jButton_saveTramiteMouseClicked
 
     /**
@@ -783,8 +795,8 @@ public class Examen5P2_HectorRivera extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTabbedPane jTabbedPane_civil;
     private javax.swing.JTable jTable_Civil_Info;
     private javax.swing.JTable jTable_Civil_tramites;
     private javax.swing.JTable jTable_Civiles;

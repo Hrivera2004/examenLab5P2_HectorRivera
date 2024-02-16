@@ -44,7 +44,7 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTabbedPane1" max="32767" attributes="0"/>
+                      <Component id="jTabbedPane_civil" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -58,7 +58,7 @@
                           <Component id="jButton_CerrarSesionCivil" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                      <Component id="jTabbedPane1" min="-2" pref="408" max="-2" attributes="0"/>
+                      <Component id="jTabbedPane_civil" min="-2" pref="408" max="-2" attributes="0"/>
                       <EmptySpace pref="63" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -80,9 +80,9 @@
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton_CerrarSesionCivilMouseClicked"/>
               </Events>
             </Component>
-            <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+            <Container class="javax.swing.JTabbedPane" name="jTabbedPane_civil">
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTabbedPane1MouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTabbedPane_civilMouseClicked"/>
               </Events>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
