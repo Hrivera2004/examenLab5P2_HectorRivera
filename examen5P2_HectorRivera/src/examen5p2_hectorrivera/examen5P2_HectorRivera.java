@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -457,7 +459,21 @@ public class Examen5P2_HectorRivera extends javax.swing.JFrame {
                 }
             }
         }
+        DefaultTableModel model1 = (DefaultTableModel) jTable_Civiles.getModel();
+        DefaultTableModel model2 = (DefaultTableModel) jTable_Tramites.getModel();
+        for (Usuario u : usuarios) {
+            if (u instanceof Civilies) {
+                Object arg1[] = {u.getNombre()+" "+u.getApellido(),u.getNumID(),u.getFN()};
+                model1.addRow(arg1);
+                for (tramite t : ((Civilies)u).getTramites()) {
+                    Object arg2[] = {t.getNombre(),t.getID_usada(),t.getFechaEnviada(),u.getNumID()};
+                    model2.addRow(arg2);
+                }   
+            }            
+        }
         
+        jTable_Civiles.setModel(model1);
+        jTable_Tramites.setModel(model2);
         
     }//GEN-LAST:event_jButton_IgresarLoginMouseClicked
 
