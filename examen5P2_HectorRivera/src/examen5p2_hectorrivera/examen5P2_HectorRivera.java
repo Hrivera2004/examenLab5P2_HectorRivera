@@ -587,12 +587,14 @@ public class Examen5P2_HectorRivera extends javax.swing.JFrame {
                         jLabel_GreetingCivil.setText("Bienvenido: "+ usuarios.get(i).getNombre()+" "+usuarios.get(i).getApellido());
                         jFrame_Civiles.setVisible(true);
                         jFrame_Empleados.pack();
+                        modificar2();
                         break;
                         
                     }else if(usuarios.get(i) instanceof empleados){
                         jLabel_GreetingEMP.setText("Bienvenido: "+ usuarios.get(i).getNombre()+" "+usuarios.get(i).getApellido());
                         jFrame_Empleados.setVisible(true);
                         jFrame_Empleados.pack();
+                        modificar1();
                         break;
                     }
                     
@@ -656,7 +658,7 @@ public class Examen5P2_HectorRivera extends javax.swing.JFrame {
         usuarios.get(pos).setSexo((String)jComboBox_sex.getSelectedItem());
         usuarios.get(pos).setFN(jCalendar_new_Date.getDate());
         
-        
+        modificar1();    
         
     }//GEN-LAST:event_jButton_modificarMouseClicked
 
@@ -668,59 +670,12 @@ public class Examen5P2_HectorRivera extends javax.swing.JFrame {
     private void jTabbedPane_civilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane_civilMouseClicked
 //         TODO add your handling code here:
 
-        DefaultTableModel model1_civ = (DefaultTableModel) jTable_Civil_Info.getModel();
-        DefaultTableModel model2_civ = (DefaultTableModel) jTable_Civil_tramites.getModel();
-        for (int i = 0; i < model1_civ.getRowCount(); i++) {
-            model1_civ.removeRow(i);
-        }
-        for (int i = 0; i < model2_civ.getRowCount(); i++) {
-            model2_civ.removeRow(i);
-        }
-        
-        Civilies u = (Civilies)usuarios.get(usuario);
-            
-        Object arg1[] = {u.getNombre()+" "+u.getApellido(),u.getNumID(),u.getFN()};
-        model1_civ.addRow(arg1);
-        for (tramite t : u.getTramites()) {
-            Object arg2[] = {t.getNombre(),t.getID_usada(),t.getFechaEnviada(),u.getNumID()};
-            model2_civ.addRow(arg2);
-        }   
-                      
-        jTable_Civil_Info.setModel(model1_civ);
-        jTable_Civil_tramites.setModel(model2_civ);
         
     }//GEN-LAST:event_jTabbedPane_civilMouseClicked
 
     private void jTabbedPane2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane2MouseClicked
         // TODO add your handling code here:
-        DefaultTableModel model1 = (DefaultTableModel) jTable_Civiles.getModel();
-        DefaultTableModel model2 = (DefaultTableModel) jTable_Tramites.getModel();
         
-        for (int i = 0; i < model1.getRowCount(); i++) {
-            model1.removeRow(i);
-        }
-        for (int i = 0; i < model2.getRowCount(); i++) {
-            model2.removeRow(i);
-        }
-        for (int i = 0; i<usuarios.size();i++) {
-            
-            if (usuarios.get(i) instanceof Civilies) {
-                Object arg1[] = {usuarios.get(i).getNombre()+" "+usuarios.get(i).getApellido(),usuarios.get(i).getNumID(),usuarios.get(i).getFN()};
-                System.out.println(i+usuarios.get(i).getNombre());
-                if (i<usuarios.size()-1) {
-                    model1.addRow(arg1);
-                }
-                
-                for (tramite t : ((Civilies)usuarios.get(i)).getTramites()) {
-                    Object arg2[] = {t.getNombre(),t.getID_usada(),t.getFechaEnviada(),usuarios.get(i).getNumID()};
-                    model2.addRow(arg2);
-                }   
-            }else{
-                System.out.println(i+"salir");
-            }            
-        }
-        jTable_Civiles.setModel(model1);
-        jTable_Tramites.setModel(model2);
 
     }//GEN-LAST:event_jTabbedPane2MouseClicked
 
@@ -730,7 +685,7 @@ public class Examen5P2_HectorRivera extends javax.swing.JFrame {
         ((Civilies)usuarios.get(usuario)).getTramites().add(
         new tramite(jTextField_tramiteNombre.getText(), usuarios.get(usuario).getNumID(), new Date())
         );
-        
+        modificar2();
     }//GEN-LAST:event_jButton_saveTramiteMouseClicked
 
     private void jButton_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_modificarActionPerformed
@@ -879,5 +834,50 @@ public class Examen5P2_HectorRivera extends javax.swing.JFrame {
             }
         }
         return false;
+    }
+    public void modificar1(){
+        DefaultTableModel model1 = (DefaultTableModel) jTable_Civiles.getModel();
+        DefaultTableModel model2 = (DefaultTableModel) jTable_Tramites.getModel();
+        
+        model1.setRowCount(0);
+        model2.setRowCount(0);
+        for (int i = 0; i<usuarios.size();i++) {
+            
+            if (usuarios.get(i) instanceof Civilies) {
+                Object arg1[] = {usuarios.get(i).getNombre()+" "+usuarios.get(i).getApellido(),usuarios.get(i).getNumID(),usuarios.get(i).getFN()};
+                System.out.println(i+usuarios.get(i).getNombre());
+                model1.addRow(arg1);
+                for (tramite t : ((Civilies)usuarios.get(i)).getTramites()) {
+                    Object arg2[] = {t.getNombre(),t.getID_usada(),t.getFechaEnviada(),usuarios.get(i).getNumID()};
+                    model2.addRow(arg2);
+                }   
+            }
+            
+        }
+        jTable_Civiles.setModel(model1);
+        jTable_Tramites.setModel(model2);
+    }
+    public void modificar2(){
+        DefaultTableModel model1_civ = (DefaultTableModel) jTable_Civil_Info.getModel();
+        DefaultTableModel model2_civ = (DefaultTableModel) jTable_Civil_tramites.getModel();
+        for (int i = 0; i < model1_civ.getRowCount(); i++) {
+            model1_civ.removeRow(i);
+        }
+        for (int i = 0; i < model2_civ.getRowCount(); i++) {
+            model2_civ.removeRow(i);
+        }
+        
+        Civilies u = (Civilies)usuarios.get(usuario);
+            
+        Object arg1[] = {u.getNombre()+" "+u.getApellido(),u.getNumID(),u.getFN()};
+        model1_civ.addRow(arg1);
+        for (tramite t : u.getTramites()) {
+            Object arg2[] = {t.getNombre(),t.getID_usada(),t.getFechaEnviada(),u.getNumID()};
+            model2_civ.addRow(arg2);
+        }   
+                      
+        jTable_Civil_Info.setModel(model1_civ);
+        jTable_Civil_tramites.setModel(model2_civ);
+        
     }
 }
