@@ -690,19 +690,26 @@ public class Examen5P2_HectorRivera extends javax.swing.JFrame {
     private void jTabbedPane2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane2MouseClicked
         // TODO add your handling code here:
         DefaultTableModel model1 = (DefaultTableModel) jTable_Civiles.getModel();
-                    DefaultTableModel model2 = (DefaultTableModel) jTable_Tramites.getModel();
-                    for (Usuario u : usuarios) {
-                        if (u instanceof Civilies) {
-                            Object arg1[] = {u.getNombre()+" "+u.getApellido(),u.getNumID(),u.getFN()};
-                            model1.addRow(arg1);
-                            for (tramite t : ((Civilies)u).getTramites()) {
-                                Object arg2[] = {t.getNombre(),t.getID_usada(),t.getFechaEnviada(),u.getNumID()};
-                                model2.addRow(arg2);
-                            }   
-                        }            
-                    }
+        DefaultTableModel model2 = (DefaultTableModel) jTable_Tramites.getModel();
+        for (int i = 0; i < model1.getRowCount(); i++) {
+            model1.removeRow(i);
+        }
+        for (int i = 0; i < model2.getRowCount(); i++) {
+            model2.removeRow(i);
+        }
+        for (Usuario u : usuarios) {
+            if (u instanceof Civilies) {
+                Object arg1[] = {u.getNombre()+" "+u.getApellido(),u.getNumID(),u.getFN()};
+                model1.addRow(arg1);
+                for (tramite t : ((Civilies)u).getTramites()) {
+                    Object arg2[] = {t.getNombre(),t.getID_usada(),t.getFechaEnviada(),u.getNumID()};
+                    model2.addRow(arg2);
+                }   
+            }            
+        }
         
-                    jTable_Civiles.setModel(model1);
+        jTable_Civiles.setModel(model1);
+        jTable_Tramites.setModel(model2);
 
     }//GEN-LAST:event_jTabbedPane2MouseClicked
 
@@ -810,6 +817,7 @@ public class Examen5P2_HectorRivera extends javax.swing.JFrame {
     private int usuario=0;
     
     public String ID(Usuario usuario){
+        
         String ID ="";
         Random rd = new Random();
         int aux = 0;
@@ -841,10 +849,20 @@ public class Examen5P2_HectorRivera extends javax.swing.JFrame {
         }
         
         ID= ID + "-"+usuario.getFN().getYear()+"-";
-        
-        for (int i = 0; i < 5; i++) {
-            ID = ID + rd.nextInt(10);
-        }
+        do{
+            for (int i = 0; i < 5; i++) {
+                ID = ID + rd.nextInt(10);
+            }
+        }while(verID(ID));
         return ID;
+    }
+    public boolean verID(String ID){
+        
+        for (int i = 0; i < usuarios.size(); i++) {
+            if (usuarios.get(i).getNumID().equals(ID)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
