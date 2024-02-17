@@ -392,6 +392,11 @@ public class Examen5P2_HectorRivera extends javax.swing.JFrame {
                 jButton_modificarMouseClicked(evt);
             }
         });
+        jButton_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_modificarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -662,6 +667,7 @@ public class Examen5P2_HectorRivera extends javax.swing.JFrame {
 
     private void jTabbedPane_civilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane_civilMouseClicked
 //         TODO add your handling code here:
+
         DefaultTableModel model1_civ = (DefaultTableModel) jTable_Civil_Info.getModel();
         DefaultTableModel model2_civ = (DefaultTableModel) jTable_Civil_tramites.getModel();
         for (int i = 0; i < model1_civ.getRowCount(); i++) {
@@ -680,8 +686,6 @@ public class Examen5P2_HectorRivera extends javax.swing.JFrame {
             model2_civ.addRow(arg2);
         }   
                       
-        
-
         jTable_Civil_Info.setModel(model1_civ);
         jTable_Civil_tramites.setModel(model2_civ);
         
@@ -691,23 +695,30 @@ public class Examen5P2_HectorRivera extends javax.swing.JFrame {
         // TODO add your handling code here:
         DefaultTableModel model1 = (DefaultTableModel) jTable_Civiles.getModel();
         DefaultTableModel model2 = (DefaultTableModel) jTable_Tramites.getModel();
+        
         for (int i = 0; i < model1.getRowCount(); i++) {
             model1.removeRow(i);
         }
         for (int i = 0; i < model2.getRowCount(); i++) {
             model2.removeRow(i);
         }
-        for (Usuario u : usuarios) {
-            if (u instanceof Civilies) {
-                Object arg1[] = {u.getNombre()+" "+u.getApellido(),u.getNumID(),u.getFN()};
-                model1.addRow(arg1);
-                for (tramite t : ((Civilies)u).getTramites()) {
-                    Object arg2[] = {t.getNombre(),t.getID_usada(),t.getFechaEnviada(),u.getNumID()};
+        for (int i = 0; i<usuarios.size();i++) {
+            
+            if (usuarios.get(i) instanceof Civilies) {
+                Object arg1[] = {usuarios.get(i).getNombre()+" "+usuarios.get(i).getApellido(),usuarios.get(i).getNumID(),usuarios.get(i).getFN()};
+                System.out.println(i+usuarios.get(i).getNombre());
+                if (i<usuarios.size()-1) {
+                    model1.addRow(arg1);
+                }
+                
+                for (tramite t : ((Civilies)usuarios.get(i)).getTramites()) {
+                    Object arg2[] = {t.getNombre(),t.getID_usada(),t.getFechaEnviada(),usuarios.get(i).getNumID()};
                     model2.addRow(arg2);
                 }   
+            }else{
+                System.out.println(i+"salir");
             }            
         }
-        
         jTable_Civiles.setModel(model1);
         jTable_Tramites.setModel(model2);
 
@@ -721,6 +732,10 @@ public class Examen5P2_HectorRivera extends javax.swing.JFrame {
         );
         
     }//GEN-LAST:event_jButton_saveTramiteMouseClicked
+
+    private void jButton_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_modificarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_modificarActionPerformed
 
     /**
      * @param args the command line arguments
